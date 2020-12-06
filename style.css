@@ -1,10 +1,10 @@
 .listItem{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-border-width: 2px;
-border-style: solid;
-padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px;
 }
 
 .innerObject{
@@ -20,11 +20,11 @@ padding: 10px;
     border-width: 2px;
     border-style: solid;
     padding: 10px;
-    }
+}
 
-    .innerObjectFull{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+.innerObjectFull{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
         
-    }    
+}    

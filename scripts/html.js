@@ -26,9 +26,24 @@ function generateInputArea(){
         )
 }    
 
-function bookmarksUi(){
+function renderBookmarksUi(){
+   
     const list = store.store.bookmarks.map(b => {
-      return (
+        console.log(b.expanded)
+      if (b.expanded === false){
+        return bookmarksUi(b);
+    } else {
+        return bookmarksExpandedUi(b);
+    }
+})
+    
+    return (`<div>${list.join(" ")}</div>`)
+    
+    
+}
+
+function bookmarksUi(b){
+    return (
         `<div class="listItem" data-bookmark-id="${b.id}">
            <div class="innerObject">
                <p>${b.title}</p>
@@ -36,38 +51,32 @@ function bookmarksUi(){
            <div class="innerObject">
                <p>${b.rating}</p> 
            </div>
-           <form class="expand" id="expand">
-                   <button class=expandButton>Expand</button>
-            </form>
+           
        </div>`
       )
-    })
-    return (
-      `<div>${list.join(" ")}</div>`
-    )
 }
 
-function bookmarksExpandedUi(){
+function bookmarksExpandedUi(b){
     return(
-        `<div class="listItemFull" id="listItem">
-           <div class="innerObjectFull">
-               <p>${items[i].title}</p>
-               <p>${items[i].rating}</p> 
-               <form class="delete" id="delete">
-                   <button class=deleteButton>Delete</button>
-               </form>
-           </div>
-           <div class="innerObjectFull">
-               <a href="${items[i].url}">Link</a> 
+        `<div class="listItemFull" data-bookmark-id="${b.id}">
+           <div class="innerObjectFull" data-bookmark-id="${b.id}">
+               <p>${b.title}</p>
+               <p>${b.rating}</p> 
                
            </div>
            <div class="innerObjectFull">
-               <p>${items[i].description}</p>
+               <a href="${b.url}">Link</a> 
+               
            </div>
-           <form class="expand" id="expand">
-                   <button class=expandButton>Expand</button>
-            </form>
-       </div>`
+           <div class="innerObjectFull">
+               <p>${b.desc}</p>
+           </div>
+           <form class="delete" id="delete">
+                   <button class=deleteButton>Delete</button>
+        </form>
+       </div>
+
+       `
     )
 }
 
@@ -75,6 +84,6 @@ export default{
     generateHTML,
     generateInputArea,
     headerUi,
-    bookmarksUi,
+    renderBookmarksUi,
     bookmarksExpandedUi,
 }

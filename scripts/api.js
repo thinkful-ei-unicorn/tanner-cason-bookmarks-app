@@ -38,6 +38,12 @@ const listApiFetch = function (...args) {
     
   }
 
+  const deleteBookmark = function(id){
+    return fetch(baseURL, {
+      method: 'DELETE'
+    })
+  }
+
   export default{
       addBookmark,
       getBookmarks
