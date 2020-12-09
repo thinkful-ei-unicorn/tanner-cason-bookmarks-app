@@ -3,28 +3,31 @@ import app from "../scripts/app.js"
 import api from "../scripts/api.js"
 
 
-let baseURL = 'https://thinkful-list-api.herokuapp.com/tanner'
-
 function handleNewItemSubmit(){
     $('.inputForm').submit(function(event){
         event.preventDefault();
         console.log('submitting')
         
-        let newItem = JSON.stringify({ 
+        let newItem = { 
             "title": $(event.currentTarget).find('#name').val(),
             "url": $(event.currentTarget).find('#link').val(),
             "desc": $(event.currentTarget).find('#description').val(),
             "rating": $(event.currentTarget).find('#rating').val(),
             "expanded": false
-            })
+            }
         
-
         
-        api.addBookmark(newItem)
-        .then(app.main())
-        console.log(store.store.bookmarks);
-        //app.render()
+        api.addBookmark(newItem, onSuccessCreate)
+        
+       
     })
+}
+
+function onSuccessCreate(newItem){
+    store.addToStore(newItem);
+    app.render();
+    $('.inputForm')[0].reset();
+    
 }
 
 
@@ -51,9 +54,18 @@ function handleToggleExpand(){
 }
 
 function handleDeleteClick(){
-    $('.inputAreaFull').click('.deleteButton', function (event){
+    $('.bookmarkArea').on('click', '.deleteButton', function (event){
         event.preventDefault();
-        console.log(Deleted)
+        console.log($(event.currentTarget).data("bookmark-id"))
+
+        let bookmarkId = $(event.currentTarget).data("bookmark-id");
+
+        
+        store.deleteBookmark(bookmarkId);
+        api.deleteBookmark(bookmarkId)
+        .then(
+        app.render()
+        );
     })
 }
 

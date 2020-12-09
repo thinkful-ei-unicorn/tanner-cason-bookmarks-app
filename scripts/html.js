@@ -11,8 +11,8 @@ function headerUi(){
 function generateInputArea(){
      $('.inputField').html(
             `<form class="inputForm">
-            <input id="name" type="string" placeholder="Bookmark Name"><br>
-            <input id="link" type="string" placeholder="Bookmark Link"><br>
+            <input id="name" type="string" placeholder="Bookmark Name" required><br>
+            <input id="link" type="string" placeholder="Bookmark Link" required><br>
             <input id="description" type="string" placeholder="description"><br>
             <select id="rating" type="" placeholder="Rating"><br> <!-- rating system will be updated with styling-->
                 <option name="1star">1</option>
@@ -26,13 +26,17 @@ function generateInputArea(){
         )
 }    
 
+
+
 function renderBookmarksUi(){
    
     const list = store.store.bookmarks.map(b => {
         console.log(b.expanded)
       if (b.expanded === false){
+          
         return bookmarksUi(b);
     } else {
+        
         return bookmarksExpandedUi(b);
     }
 })
@@ -48,7 +52,7 @@ function bookmarksUi(b){
            <div class="innerObject">
                <p>${b.title}</p>
            </div>
-           <div class="innerObject">
+           <div class="rating">
                <p>${b.rating}</p> 
            </div>
            
@@ -64,16 +68,16 @@ function bookmarksExpandedUi(b){
                <p>${b.rating}</p> 
                
            </div>
-           <div class="innerObjectFull">
+           <div class="fullLink">
                <a href="${b.url}">Link</a> 
                
            </div>
-           <div class="innerObjectFull">
+           <div class="description">
                <p>${b.desc}</p>
            </div>
-           <form class="delete" id="delete">
-                   <button class=deleteButton>Delete</button>
-        </form>
+           <form class="delete" type="button" id="delete" >
+                   <button class=deleteButton data-bookmark-id="${b.id}">Delete</button>
+            </form>
        </div>
 
        `
@@ -86,4 +90,5 @@ export default{
     headerUi,
     renderBookmarksUi,
     bookmarksExpandedUi,
+   
 }

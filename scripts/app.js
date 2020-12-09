@@ -4,8 +4,6 @@ import submit from "../scripts/submit.js";
 import api from "../scripts/api.js";
 import html from "../scripts/html.js"
 
-let baseURL = 'https://thinkful-list-api.herokuapp.com/tanner'
-
 
 function render(){
 
@@ -17,8 +15,8 @@ renderBookmarksArea();
 
 function renderBookmarksArea(){
     $('.bookmarkArea').empty();
-       $('.bookmarkArea').html(html.renderBookmarksUi())
-       console.log(store.store.bookmarks)
+    $('.bookmarkArea').html(html.renderBookmarksUi())
+       //console.log(store.store.bookmarks)
         }
     
 
@@ -34,8 +32,6 @@ api.getBookmarks()
  }).catch(err => {
      console.log(err)
  })
-
-
 html.generateHTML();
 html.headerUi();
 html.generateInputArea();
@@ -43,7 +39,7 @@ submit.handleNewItemSubmit();
 submit.handleToggleExpand();
 submit.handleDeleteClick();
 
-//render();
+render();
 }
 
 
