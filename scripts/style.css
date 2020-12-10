@@ -1,0 +1,102 @@
+html{
+      background-color: #afe9ff;
+      font-family: arial;
+      
+      
+      font-size: bolder;
+  }
+
+  header{
+      text-align: center;
+      background-color: #cbffe6;
+    border-color: #ffcfea;
+    border-style: solid;
+    border-radius: 35px;
+  }
+
+.listItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px;
+    background-color: #cbffe6;
+    border-style: solid;
+    border-radius: 35px;
+    border-color: #ffcfea;
+}
+
+.innerObject{
+    display: flex;
+    flex-direction: row;
+    background-color: #feffbe;
+    border-style: solid;
+    border-radius: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-color: #ffcfea;
+    
+}
+
+.listItemFull{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px;
+    background-color: #cbffe6;
+    border-style: solid;
+    border-radius: 35px;
+    border-color: #ffcfea;
+}
+
+.innerObjectFull{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #feffbe;
+    border-color: #ffcfea;
+    
+        
+}   
+
+.filter{
+    text-align: center;
+    background-color: #cbffe6;
+    border-color: #ffcfea;
+    border-style: solid;
+    border-radius: 35px;
+    padding-bottom: 5px;
+    
+}
+
+#filterSelect{
+    background-color: #ffcfea;
+    border-color: #ffcfea;
+}
+
+input{
+    background-color: #cbffe6; 
+    border-color: #ffcfea;
+}
+
+#rating{
+    background-color: #cbffe6;
+    border-color: #cbffe6;
+}
+
+.filterText{
+    
+}
+
+
+
+
+
+  

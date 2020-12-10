@@ -9,17 +9,22 @@ const listApiFetch = function (url, options, cb) {
   return fetch(url, options)
     .then (response => {
       if (!response.ok) {
-        error = true;
+        error = {code: response.status};
+      }
+      if (!response.headers.get('content-type').includes('json')) {
+        error.message = response.statusText;
+        return Promise.reject(err);
       }
       return response.json();
     })
     .then (data => {
-      if (!error) {
-        debugger;
+      if (error) {
+        
+        error.message = data.message;
+        return Promise.reject(error);
+      } else {
         data.expanded = false;
         cb(data);
-        return data;
-      } else {
         return data;
       }
     });
@@ -37,17 +42,14 @@ const listApiFetch = function (url, options, cb) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newBookmark)
         
-    }, cb)
+    }, cb) .catch(
+      err => {
+        window.alert(err.message);
+      }
+    )
   }
 
-  const editBookmark = function(newBookmark, cb){
-    return listApiFetch(`${baseURL}/${newBookmark.id}`,{
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(newBookmark)
-        
-    }, cb)
-  }
+  
 
   const deleteBookmark = function(id){
     return fetch(`${baseURL}/${id}`, {

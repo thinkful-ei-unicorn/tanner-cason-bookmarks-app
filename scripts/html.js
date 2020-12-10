@@ -5,7 +5,7 @@ function generateHTML(){
 }
 
 function headerUi(){
-    $('header').html(`<h1>My Bookmarks App</h1>`)
+    $('header').html(`<h1>Bookmarks</h1>`)
     }
 
 function generateInputArea(){
@@ -14,15 +14,28 @@ function generateInputArea(){
             <input id="name" type="string" placeholder="Bookmark Name" required><br>
             <input id="link" type="string" placeholder="Bookmark Link" required><br>
             <input id="description" type="string" placeholder="description"><br>
-            <select id="rating" type="" placeholder="Rating"><br> <!-- rating system will be updated with styling-->
+            <select id="rating" type="" placeholder="Rating"><br> 
+                <option value="">Rating</option>
+                <option value=1 name="1star">1</option>
+                <option value=2 name="2star">2</option>
+                <option value=3 name="3star">3</option>
+                <option value=4 name="4star">4</option>
+                <option value=5 name="5star">5</option>
+            </select><br>    
+            
+            <button type="submit" id="submit">Submit</button>
+        </form>
+        <hr>
+            <div class="filter">
+                <p>Filter</p>
+            <select id="filterSelect"><br> 
                 <option name="1star">1</option>
                 <option name="2star">2</option>
                 <option name="3star">3</option>
                 <option name="4star">4</option>
                 <option name="5star">5</option>
-            </select><br>    
-            <button type="submit" id="submit">Submit</button>
-        </form>`
+            </select><br> 
+        </div> `
         )
 }    
 
@@ -32,12 +45,14 @@ function renderBookmarksUi(){
    
     const list = store.store.bookmarks.map(b => {
         console.log(b.expanded)
+     if(b.rating >= store.store.filter){   
       if (b.expanded === false){
           
         return bookmarksUi(b);
     } else {
         
         return bookmarksExpandedUi(b);
+    }
     }
 })
     

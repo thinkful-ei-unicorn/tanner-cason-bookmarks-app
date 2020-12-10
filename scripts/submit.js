@@ -69,8 +69,18 @@ function handleDeleteClick(){
     })
 }
 
+function handleFilter(){
+    $('.filter').on('change', function(event){
+        event.preventDefault()
+        store.store.filter = $(event.currentTarget).find('#filterSelect').val()
+        console.log(store.store.filter)
+        app.render()
+    })
+}
+
 export default{
     handleNewItemSubmit,
     handleToggleExpand,
-    handleDeleteClick
+    handleDeleteClick,
+    handleFilter
 }

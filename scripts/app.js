@@ -38,6 +38,7 @@ html.generateInputArea();
 submit.handleNewItemSubmit();
 submit.handleToggleExpand();
 submit.handleDeleteClick();
+submit.handleFilter();
 
 render();
 }
