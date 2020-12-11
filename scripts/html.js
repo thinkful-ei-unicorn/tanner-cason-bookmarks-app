@@ -11,9 +11,12 @@ function headerUi(){
 function generateInputArea(){
      $('.inputField').html(
             `<form class="inputForm">
-            <input id="name" type="string" placeholder="Bookmark Name" required><br>
-            <input id="link" type="string" placeholder="Bookmark Link" required><br>
-            <input id="description" type="string" placeholder="description"><br>
+            <input id="name" type="string" placeholder="Bookmark Name" required>
+            <label for="name">Name</label><br>
+            <input id="link" type="string" placeholder="Bookmark Link" required>
+            <label for="link">Link</label><br>
+            <input id="description" type="string" placeholder="description">
+            <label for="description">Description</label><br>
             <select id="rating" type="" placeholder="Rating"><br> 
                 <option value="">Rating</option>
                 <option value=1 name="1star">1</option>
