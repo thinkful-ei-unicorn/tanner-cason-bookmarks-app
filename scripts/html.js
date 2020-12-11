@@ -1,7 +1,7 @@
 import store from "../scripts/store.js"
 
 function generateHTML(){
-    $('body').html(`<header></header><div class="inputField"></div><hr><div class="bookmarkArea"></div>`)
+    $('body').html(`<header></header><section class="inputField"></section><hr><section class="bookmarkArea"></section>`)
 }
 
 function headerUi(){
@@ -10,13 +10,14 @@ function headerUi(){
 
 function generateInputArea(){
      $('.inputField').html(
-            `<form class="inputForm">
+            `<div class="inputArea">
+            <form class="inputForm">
             <input id="name" type="string" placeholder="Bookmark Name" required>
-            <label for="name">Name</label><br>
+                <label for="name">Name</label><br>
             <input id="link" type="string" placeholder="Bookmark Link" required>
-            <label for="link">Link</label><br>
+                <label for="link">Link</label><br>
             <input id="description" type="string" placeholder="description">
-            <label for="description">Description</label><br>
+                <label for="description">Description</label><br>
             <select id="rating" type="" placeholder="Rating"><br> 
                 <option value="">Rating</option>
                 <option value=1 name="1star">1</option>
@@ -27,9 +28,10 @@ function generateInputArea(){
             </select><br>    
             
             <button type="submit" id="submit">Submit</button>
-        </form>
+            </form>
+            </div>
         <hr>
-            <div class="filter">
+        <section class="filter">
                 <p>Filter</p>
             <select id="filterSelect"><br> 
                 <option name="1star">1</option>
@@ -38,7 +40,7 @@ function generateInputArea(){
                 <option name="4star">4</option>
                 <option name="5star">5</option>
             </select><br> 
-        </div> `
+        </section> `
         )
 }    
 
@@ -59,28 +61,27 @@ function renderBookmarksUi(){
     }
 })
     
-    return (`<div>${list.join(" ")}</div>`)
+    return (`<div class="bookmarkList">${list.join(" ")}</div>`)
     
     
 }
 
 function bookmarksUi(b){
     return (
-        `<div class="listItem" data-bookmark-id="${b.id}">
+        `<li class="listItem" data-bookmark-id="${b.id}">
            <div class="innerObject">
                <p>${b.title}</p>
            </div>
            <div class="rating">
                <p>${b.rating}</p> 
            </div>
-           
-       </div>`
+        </li>`
       )
 }
 
 function bookmarksExpandedUi(b){
     return(
-        `<div class="listItemFull" data-bookmark-id="${b.id}">
+        `<li class="listItemFull" data-bookmark-id="${b.id}">
            <div class="innerObjectFull" data-bookmark-id="${b.id}">
                <p>${b.title}</p>
                <p>${b.rating}</p> 
@@ -96,7 +97,7 @@ function bookmarksExpandedUi(b){
            <form class="delete" type="button" id="delete" >
                    <button class=deleteButton data-bookmark-id="${b.id}">Delete</button>
             </form>
-       </div>
+       </li>
 
        `
     )
